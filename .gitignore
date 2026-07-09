@@ -1,0 +1,50 @@
+###############
+# .NET
+###############
+bin/
+obj/
+*.user
+*.suo
+.vs/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+*.log
+
+# Rider / VS Code
+.idea/
+.vscode/
+!.vscode/extensions.json
+
+###############
+# React / Node
+###############
+node_modules/
+frontend/build/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+###############
+# Secretos y config local
+###############
+appsettings.Development.json
+appsettings.Local.json
+*.pfx
+.env
+
+###############
+# Docker / DB
+###############
+pgdata/
+
+###############
+# OS
+###############
+Thumbs.db
+.DS_Store
