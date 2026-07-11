@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using OrderFlow.Application.Common.Exceptions;
 using OrderFlow.Application.Common.Interfaces;
 using OrderFlow.Domain.Entities;
 
@@ -27,7 +28,7 @@ public class RegisterTenantCommandHandler
             .AnyAsync(t => t.Slug == request.Slug, cancellationToken);
 
         if (slugTaken)
-            throw new InvalidOperationException($"El slug '{request.Slug}' ya está en uso.");
+            throw new ConflictException($"El slug '{request.Slug}' ya está en uso.");
 
         var tenant = new Tenant
         {

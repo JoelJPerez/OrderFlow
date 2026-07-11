@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using OrderFlow.Application.Common.Exceptions;
 using OrderFlow.Application.Common.Interfaces;
 
 namespace OrderFlow.Application.Features.Auth.Login;
@@ -26,7 +27,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResult>
                 cancellationToken);
 
         if (user is null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
-            throw new UnauthorizedAccessException("Credenciales inválidas.");
+            throw new UnauthorizedException("Credenciales inválidas.");
 
         return new LoginResult(
             _tokenService.GenerateToken(user),
